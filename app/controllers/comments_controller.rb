@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to
+    # ErrorCause: no parameter set to redirect_to argument
+    # FixReason: set parameter to redirect_to argument
+    redirect_to blog_path(@blog)
   end
 
   private

@@ -15,7 +15,9 @@
 
   <p>
     <strong>Comment:</strong>
-    <%= @blog.comments.count.to_i + "comments" %>
+    <%# ErrorCause: TypeCastError: String can't be coerced into Integer %>
+    <%# FixReason: use to_s to convert Integer to String %>
+    <%= "#{@blog.comments.count} comments" %>
   </p>
 
   <p>
@@ -26,6 +28,9 @@
 <p>
   <%= render 'comments/form', blog: @blog %>
 </p>
-
-<%= link_to 'Edit', '/blogs/#{blog.id}/edit' %> |
+<%# ErrorCause: can't render blog_edit_path %>
+<%# FixReason: use double quote to string interpolation %>
+<%# ErrorCause: undefined local variable or method `blog' %>
+<%# FixReason: set instance variable @blog %>
+<%= link_to 'Edit', "/blogs/#{@blog.id}/edit" %> |
 <%= link_to 'Back', blogs_path %>

@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_033857) do
+ActiveRecord::Schema.define(version: 2019_05_05_123415) do
 
   create_table "blogs", force: :cascade do |t|
     t.string "title", null: false
-    t.integer "content", null: false
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "content", null: false
     t.integer "blog_id"
     t.datetime "created_at", null: false

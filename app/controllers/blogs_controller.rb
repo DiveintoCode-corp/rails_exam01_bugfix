@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update]
+  # ErrorCause: undefined method `destroy' for nil:NilClass, @blog is nil
+  # FixReason: add :destroy to before_action callback
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
@@ -41,7 +43,9 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
   end
 
+  # ErrorCause: blog_params don't permit :content
+  # FixReason: add parameter to permit :content
   def blog_params
-    params.require(:blog).permit(:title)
+    params.require(:blog).permit(:title, :content)
   end
 end

@@ -1,0 +1,6 @@
+<h1>New Blog</h1>
+<%# ErrorCause: BlogsController#new is missing a template %>
+<%# FixReason: fix template name _new.html.erb to new.html.erb %>
+<%= render 'form', blog: @blog %>
+
+<%= link_to 'Back', blogs_path %>
